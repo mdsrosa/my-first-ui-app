@@ -1,7 +1,7 @@
 __author__ = 'matheusrosa'
 
 import sys
-from PyQt4 import QtGui
+from PyQt4 import QtGui, QtCore
 
 
 class Example(QtGui.QWidget):
@@ -12,13 +12,10 @@ class Example(QtGui.QWidget):
 
     def init(self):
 
-        QtGui.QToolTip.setFont(QtGui.QFont('SansSerif', 10))
-        self.setToolTip('This is a <b>QWidget</b> widget')
-
-        btn = QtGui.QPushButton('Button', self)
-        btn.setToolTip('This is a <b>QPushButton</b> widget')
-        btn.resize(btn.sizeHint())
-        btn.move(50, 50)
+        qbtn = QtGui.QPushButton('Quit', self)
+        qbtn.clicked.connect(QtCore.QCoreApplication.instance().quit)
+        qbtn.resize(qbtn.sizeHint())
+        qbtn.move(50, 50)
 
         self.setGeometry(300, 300, 250, 150)
         self.setWindowTitle('Icon')
